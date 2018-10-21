@@ -4,5 +4,6 @@ package object exp {
     case Number(n) => n.toString
     case Variable(name) => name
     case Sum(terms) => terms map print mkString " + "
+    case Product(terms) => terms map print mkString " * "
   }
 }

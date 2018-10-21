@@ -10,6 +10,7 @@ class PrintSpec extends FunSuite {
   implicit def stringToVariable(name: String): Variable= Variable(name)
 
   def sum(terms: Expression*) = Sum(terms.toList)
+  def product(terms: Expression*) = Product(terms.toList)
 
   test("single number") {
     val exp = Number(10)
@@ -34,5 +35,15 @@ class PrintSpec extends FunSuite {
   test("sum of sums") {
     val exp = sum(sum(1, "a"), sum(3, "b"))
     assert(print(exp) == "1 + a + 3 + b")
+  }
+
+  test("product of numbers and variables") {
+    val exp = product(1, "a", 3, "b")
+    assert(print(exp) == "1 * a * 3 * b")
+  }
+
+  test("product of products") {
+    val exp = product(product(1, "a"), product(3, "b"))
+    assert(print(exp) == "1 * a * 3 * b")
   }
 }
