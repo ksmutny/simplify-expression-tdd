@@ -8,4 +8,9 @@ class PrintSpec extends FunSuite {
     val exp = Number(10)
     assert(print(exp) == "10")
   }
+
+  test("single variable") {
+    val exp = Variable("x")
+    assert(print(exp) == "x")
+  }
 }
