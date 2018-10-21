@@ -46,4 +46,14 @@ class PrintSpec extends FunSuite {
     val exp = product(product(1, "a"), product(3, "b"))
     assert(print(exp) == "1 * a * 3 * b")
   }
+
+  test("product of sums") {
+    val exp = product(sum(1, "a"), sum(3, "b"))
+    assert(print(exp) == "(1 + a) * (3 + b)")
+  }
+
+  test("sum of products") {
+    val exp = sum(product(1, "a"), product(3, "b"))
+    assert(print(exp) == "1 * a + 3 * b")
+  }
 }
